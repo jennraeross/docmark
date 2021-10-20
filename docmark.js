@@ -14,6 +14,9 @@ var md = require('markdown-it')();
 // open (opens files in native system)
 const open = require('open');
 
+// liveserver, to preview content in browser
+var liveServer = require("live-server");
+
 // Beginning of default boilerplate for generated html file
 var boilerplateHeaderOpening = `
 <!DOCTYPE html>
@@ -65,7 +68,9 @@ fs.readFile(options.input, 'utf-8', function (err, data) {
     if (err) return console.log(err);
 
     // TODO: Open file in browser
-    open('output.html');
+    var params = {open: true, file: 'output.html'};
+    liveServer.start(params);
+    //open('output.html');
   })
 });
 
